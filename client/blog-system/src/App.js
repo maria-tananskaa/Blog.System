@@ -1,3 +1,4 @@
+import { Navigation } from './components/Navigation/Navigation';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Blog } from './components/Blog/Blog';
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <>
+      <Navigation />
       <h1>Blog</h1>
       <Routes>
         <Route path='/' element={<Blog posts={posts} />} />
