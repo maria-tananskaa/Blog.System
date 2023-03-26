@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Blog } from './components/Blog/Blog';
 import * as postService from './services/postService';
 
@@ -15,7 +16,10 @@ function App() {
   return (
     <>
       <h1>Blog</h1>
-      <Blog posts={posts} />
+      <Routes>
+        <Route path='/' element={<Blog posts={posts} />} />
+      </Routes>
+
     </>
   );
 }
