@@ -7,3 +7,10 @@ export async function getAll() {
 
     return posts;
 }
+
+export async function getOne(postId) {
+    const response = await fetch(`${baseUrl}/${postId}`, { method: 'GET' });
+    const post = await response.json();
+
+    return post;
+}

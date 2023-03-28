@@ -1,6 +1,7 @@
-import {  Button, Stack } from '@mui/material';
+import {  Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
+
 export function Navigation() {
     return (
         <div className={styles.container}>
@@ -10,7 +11,7 @@ export function Navigation() {
                 alignItems="center"
                 spacing={2}
             >
-                <Button><Link className="button" to="/">Home</Link></Button>
+                <Link className={styles.button} to="/">Home</Link>
             </Stack>
         </div>
     );

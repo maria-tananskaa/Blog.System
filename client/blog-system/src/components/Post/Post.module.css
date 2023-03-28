@@ -1,0 +1,12 @@
+.img {
+    height: 30em;
+    width: 100%;
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
+    color: black;
+    margin-top: 5em;
+}

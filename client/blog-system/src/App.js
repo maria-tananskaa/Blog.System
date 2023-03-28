@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Blog } from './components/Blog/Blog';
 import * as postService from './services/postService';
+import { Post } from './components/Post/Post';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -17,9 +18,9 @@ function App() {
   return (
     <>
       <Navigation />
-      <h1>Blog</h1>
       <Routes>
         <Route path='/' element={<Blog posts={posts} />} />
+        <Route path='/posts/:postId' element={<Post />} />
       </Routes>
 
     </>

@@ -1,4 +1,5 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export function BlogItem({
     _id,
@@ -18,7 +19,7 @@ export function BlogItem({
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Read More</Button>
+                <Link to={`/posts/${_id}`}><Button size="small">Read More</Button></Link>
             </CardActions>
         </Card>
     );
