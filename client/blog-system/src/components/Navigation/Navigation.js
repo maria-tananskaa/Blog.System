@@ -7,7 +7,7 @@ export function Navigation() {
         <div className={styles.container}>
             <Stack
                 direction="row"
-                justifyContent="flex-end"
+                justifyContent="flex-start"
                 alignItems="center"
                 spacing={2}
             >

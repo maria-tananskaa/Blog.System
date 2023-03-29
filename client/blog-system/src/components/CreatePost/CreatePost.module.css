@@ -1,0 +1,9 @@
+.container {
+    background-color: aliceblue;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.title{
+    color: rgb(53, 51, 51);
+}
