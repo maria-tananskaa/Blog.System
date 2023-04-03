@@ -1,5 +1,5 @@
 import { Button, FormControl, Stack, TextField } from "@mui/material";
-import { margin } from "@mui/system";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from './CreatePost.module.css';
 
@@ -18,7 +18,7 @@ export function CreatePost() {
 
     return (
         <div className={styles.container}>
-            <FormControl className={styles.form} sx={{margin: '2em'}}>
+            <FormControl className={styles.form} sx={{ margin: '2em' }}>
                 <Stack spacing={2}>
                     <h2 className={styles.title}>Create Post</h2>
                     <TextField
@@ -33,7 +33,7 @@ export function CreatePost() {
                         value={values.imageUrl}
                         onChange={onChangeHandler}
                     />
-                     <TextField
+                    <TextField
                         id="shortDescription"
                         label="Short Description"
                         multiline
@@ -41,7 +41,7 @@ export function CreatePost() {
                         value={values.shortDescription}
                         onChange={onChangeHandler}
                     />
-                     <TextField
+                    <TextField
                         id="content"
                         label="Content"
                         multiline
@@ -49,7 +49,10 @@ export function CreatePost() {
                         value={values.content}
                         onChange={onChangeHandler}
                     />
-                    <Button>Create</Button>
+                    <Stack spacing={2} direction="row">
+                        <Button>Create</Button>
+                        <Link className="link-button" to="/"><Button >Cancel</Button></Link>
+                    </Stack>
                 </Stack>
             </FormControl>
         </div>

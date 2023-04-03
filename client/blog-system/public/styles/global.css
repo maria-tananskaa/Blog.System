@@ -1,5 +1,5 @@
 body {
-    background-image: url('../images/background2.jpg');
+    background-image: url('../images/background.jpg');
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -7,4 +7,8 @@ body {
     background-size: cover;
     color: aliceblue;
     text-align: center;
+}
+
+.link-button{
+    text-decoration: none;
 }
