@@ -17,9 +17,15 @@ async function request(method, url, data) {
         return {};
     }
 
-    const result = await response.json();
+    if (response.status >= 400) {
+        const error = await response.json();
+        throw error;
+    }
 
-    return result;
+
+    return await response.json()
+
+
 }
 
 export const get = (url) => request('GET', url);
