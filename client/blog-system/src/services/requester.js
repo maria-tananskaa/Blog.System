@@ -11,6 +11,15 @@ async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user?.accessToken) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': user.accessToken,
+        };
+    }
+
     const response = await fetch(url, options);
 
     if (response.status === 204) {
@@ -22,10 +31,7 @@ async function request(method, url, data) {
         throw error;
     }
 
-
     return await response.json()
-
-
 }
 
 export const get = (url) => request('GET', url);

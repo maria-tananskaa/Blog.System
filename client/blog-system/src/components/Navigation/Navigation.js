@@ -4,7 +4,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import styles from './Navigation.module.css';
 
 export function Navigation() {
-    const { openLoginDialog } = useAuthContext();
+    const { openLoginDialog, onLogout, accessToken } = useAuthContext();
 
     return (
         <div className={styles.container}>
@@ -15,8 +15,15 @@ export function Navigation() {
                 spacing={2}
             >
                 <Link className={styles.button} to="/">Home</Link>
-                <Button onClick={openLoginDialog}>Login</Button>
-                <Button>Register</Button>
+                {!accessToken && (
+                    <div>
+                        <Button onClick={openLoginDialog}>Login</Button>
+                        <Button>Register</Button>
+                    </div>
+
+                )}
+                {accessToken && ( <Button onClick={onLogout}>Logout</Button>)}
+               
             </Stack>
         </div>
     );

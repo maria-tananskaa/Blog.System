@@ -24,16 +24,23 @@ export const AuthProvider = ({
             setUser(response);
             setLoginIsOpen(false);
         } catch (err) {
-            console.log(err.message,"error");
+            console.log(err.message, "error");
         }
     };
 
+    const onLogout = async () => {
+
+        await authService.logout();
+        setUser({});
+    }
+
     const contextValues = {
         loginIsOpen,
-        user,
+        accessToken: user.accessToken,
         openLoginDialog,
         closeLoginDialog,
-        onLoginSubmit
+        onLoginSubmit,
+        onLogout
     };
 
     return (
