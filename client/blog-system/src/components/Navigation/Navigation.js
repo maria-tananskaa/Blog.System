@@ -22,8 +22,13 @@ export function Navigation() {
                     </div>
 
                 )}
-                {accessToken && ( <Button onClick={onLogout}>Logout</Button>)}
-               
+                {accessToken && (
+                    <div>
+                        <Link className={styles.button} to="/createPost">Create Post</Link>
+                        <Button onClick={onLogout}>Logout</Button>
+                    </div>
+                )}
+
             </Stack>
         </div>
     );
