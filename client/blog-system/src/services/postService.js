@@ -1,16 +1,19 @@
-const baseUrl = 'http://localhost:3030/jsonstore/posts';
+import * as requester from './requester';
+const baseUrl = 'http://localhost:3030/data/posts';
 
 export async function getAll() {
-    const response = await fetch(baseUrl, { method: 'GET' });
-    const result = await response.json();
+    const result = await requester.get(baseUrl);
     const posts = Object.values(result);
 
     return posts;
 }
 
 export async function getOne(postId) {
-    const response = await fetch(`${baseUrl}/${postId}`, { method: 'GET' });
-    const post = await response.json();
+    const post = await requester.get(`${baseUrl}/${postId}`);
+    return post;
+}
 
+export async function create(data) {
+    const post = await requester.post(baseUrl, data);
     return post;
 }
