@@ -1,9 +1,9 @@
 import { Stack } from "@mui/material";
-import { BlogItem } from "../BlogItem/BlogItem";
+import { BlogItem } from "../BlogItem/BlogItem"; 
+import { usePostContext } from "../../contexts/PostContext";
 
-export function Blog({
-    posts,
-}) {
+export function Blog() {
+    const { posts } = usePostContext();
     return (
         <Stack
             justifyContent="center"

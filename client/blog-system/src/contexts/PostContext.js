@@ -1,21 +1,31 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as postService from '../services/postService';
-import { Navigate } from 'react-router-dom';
 
 export const PostContext = createContext();
 
 export const PostProvider = ({
     children,
 }) => {
+    const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        postService.getAll()
+            .then(result => {
+                setPosts(result);
+            }).catch((err) => {
+                console.log(err);
+            })
+    }, []);
 
     const onCreatePostSubmit = async (data) => {
         try {
             const response = await postService.create(data);
 
-            console.log(response);
+            setPosts(posts => [...posts, response]);
 
-            //view navigate 
-            <Navigate to={"/"} replace={true}/>
+            navigate("/");
 
         } catch (err) {
             console.log(err.message, "error");
@@ -23,6 +33,7 @@ export const PostProvider = ({
     };
 
     const contextValues = {
+        posts,
         onCreatePostSubmit
     };
 
