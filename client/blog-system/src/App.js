@@ -8,6 +8,7 @@ import { CreatePost } from './components/CreatePost/CreatePost';
 import { AuthProvider } from './contexts/AuthContext';
 import { Login } from './components/Login/Login';
 import { PostProvider } from './contexts/PostContext';
+import { Register } from './components/Register/Register';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -28,7 +29,8 @@ function App() {
           <Route path='/posts/:postId' element={<Post />} />
           <Route path="/createPost" element={<CreatePost />} />
         </Routes>
-        <Login></Login>
+        <Login />
+        <Register />
       </PostProvider>
     </AuthProvider>
   );

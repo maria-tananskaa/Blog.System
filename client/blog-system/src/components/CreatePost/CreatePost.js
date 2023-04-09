@@ -10,8 +10,7 @@ export function CreatePost() {
         title: '',
         imageUrl: '',
         shortDescription: '',
-        content: '',
-        createdAt: new Date()
+        content: ''
     });
 
     const onChangeHandler = (e) => {
