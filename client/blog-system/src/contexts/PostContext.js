@@ -9,6 +9,7 @@ export const PostProvider = ({
 }) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
+    const [deleteDialogIsOpen, setDeleteDialogIsOpen] = useState(false);
 
     useEffect(() => {
         postService.getAll()
@@ -18,6 +19,14 @@ export const PostProvider = ({
                 console.log(err);
             })
     }, []);
+
+    const openDeleteDialog = () => {
+        setDeleteDialogIsOpen(true);
+    }
+
+    const closeDeleteDialog = () => {
+        setDeleteDialogIsOpen(false)
+    }
 
     const onCreatePostSubmit = async (data) => {
         try {
@@ -35,13 +44,17 @@ export const PostProvider = ({
     const deletePost = async (postId) => {
         await postService.remove(postId);
         setPosts(posts => posts.filter(x => x._id !== postId));
+        closeDeleteDialog();
         navigate("/");
     }
 
     const contextValues = {
         posts,
+        deleteDialogIsOpen,
         onCreatePostSubmit,
-        deletePost
+        deletePost,
+        openDeleteDialog,
+        closeDeleteDialog
     };
 
     return (
