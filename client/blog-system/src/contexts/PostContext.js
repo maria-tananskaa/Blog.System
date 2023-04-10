@@ -32,9 +32,16 @@ export const PostProvider = ({
         }
     };
 
+    const deletePost = async (postId) => {
+        await postService.remove(postId);
+        setPosts(posts => posts.filter(x => x._id !== postId));
+        navigate("/");
+    }
+
     const contextValues = {
         posts,
-        onCreatePostSubmit
+        onCreatePostSubmit,
+        deletePost
     };
 
     return (

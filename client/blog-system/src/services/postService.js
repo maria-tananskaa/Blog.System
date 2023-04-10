@@ -17,3 +17,7 @@ export async function create(data) {
     const post = await requester.post(baseUrl, data);
     return post;
 }
+
+export async function remove(postId) {
+    await requester.remove(`${baseUrl}/${postId}`);
+}

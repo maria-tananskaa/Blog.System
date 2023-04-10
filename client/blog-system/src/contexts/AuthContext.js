@@ -57,6 +57,7 @@ export const AuthProvider = ({
         loginIsOpen,
         registerIsOpen,
         accessToken: user.accessToken,
+        userId: user._id,
         openLoginDialog,
         closeLoginDialog,
         openRegisterDialog,
