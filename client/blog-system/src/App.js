@@ -18,9 +18,10 @@ function App() {
           <Route path='/posts/:postId' element={<Post />} />
           <Route path="/createPost" element={<CreatePost />} />
         </Routes>
-        <Login />
-        <Register />
       </PostProvider>
+      <Login />
+      <Register />
+
     </AuthProvider>
   );
 }
