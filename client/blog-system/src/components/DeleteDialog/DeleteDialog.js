@@ -7,7 +7,7 @@ export function DeleteDialog({postId}) {
     return (
         <Dialog open={deleteDialogIsOpen}>
             <DialogTitle>Delete Post</DialogTitle>
-            <Typography variant="subtitle1" component="div">
+            <Typography sx={{margin:'2em'}} variant="subtitle1" component="div">
                 Are you sure you want to deleten this post ?
             </Typography>
             <DialogActions>

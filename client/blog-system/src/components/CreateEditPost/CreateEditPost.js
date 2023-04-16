@@ -1,11 +1,13 @@
+import { useState, useEffect } from "react";
 import { Button, FormControl, Stack, TextField } from "@mui/material";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import styles from './CreatePost.module.css';
+import { Link, useParams } from "react-router-dom";
+import styles from './CreateEditPost.module.css';
 import { usePostContext } from "../../contexts/PostContext";
+import { getOne } from "../../services/postService";
 
-export function CreatePost() {
-    const { onCreatePostSubmit } = usePostContext();
+export function CreateEditPost() {
+    const { onCreatePostSubmit, onUpdatePostSubmit } = usePostContext();
+    const { postId } = useParams();
     const [values, setValues] = useState({
         title: '',
         imageUrl: '',
@@ -13,13 +15,29 @@ export function CreatePost() {
         content: ''
     });
 
+    useEffect(() => {
+        if (postId) {
+            getOne(postId)
+                .then(post => {
+                    setValues(post);
+                }).catch(err => {
+                    console.log(err.message);
+                });
+        }
+    }, [postId]);
+
     const onChangeHandler = (e) => {
         setValues(state => ({ ...state, [e.target.id]: e.target.value }))
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        onCreatePostSubmit(values);
+
+        if (postId) {
+            onUpdatePostSubmit(values, postId);
+        } else {
+            onCreatePostSubmit(values);
+        }
     }
 
     return (
@@ -57,7 +75,12 @@ export function CreatePost() {
                             onChange={onChangeHandler}
                         />
                         <Stack spacing={2} direction="row">
-                            <Button type="submit">Create</Button>
+                            {!postId &&
+                                <Button type="submit">Create</Button>
+                            }
+                            {postId &&
+                                <Button type="submit">Edit</Button>
+                            }
                             <Link className="link-button" to="/"><Button >Cancel</Button></Link>
                         </Stack>
                     </Stack>

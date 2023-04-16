@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Post.module.css";
 import { IconButton, Stack, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -10,6 +10,7 @@ import { usePostContext } from "../../contexts/PostContext";
 import { DeleteDialog } from "../DeleteDialog/DeleteDialog";
 
 export function Post() {
+    const navigate = useNavigate();
     const { userId } = useAuthContext();
     const { openDeleteDialog } = usePostContext();
     const [post, setPost] = useState({});
@@ -19,8 +20,14 @@ export function Post() {
         postService.getOne(postId)
             .then(response => {
                 setPost(response);
-            })
+            }).catch(error => {
+                console.log(error.message);
+            });
     }, [postId]);
+
+    const onClickEdit = () => {
+        navigate(`/editPost/${postId}`);
+    }
 
     return (
         <>
@@ -33,7 +40,7 @@ export function Post() {
                         alignItems="center"
                         spacing={2}
                     >
-                        <IconButton aria-label="delete" color="primary">
+                        <IconButton onClick={onClickEdit} aria-label="delete" color="primary">
                             <EditIcon />
                         </IconButton>
                         <IconButton onClick={openDeleteDialog} aria-label="delete" color="error">

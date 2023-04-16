@@ -16,7 +16,7 @@ export const PostProvider = ({
             .then(result => {
                 setPosts(result);
             }).catch((err) => {
-                console.log(err);
+                console.log(err.message);
             })
     }, []);
 
@@ -41,6 +41,19 @@ export const PostProvider = ({
         }
     };
 
+    const onUpdatePostSubmit = async (data, postId) => {
+        try {
+            const response = await postService.edit(data, postId);
+
+            setPosts(state => state.map(x => x._id === postId ? response : x))
+
+            navigate("/");
+
+        } catch (err) {
+            console.log(err.message, "error");
+        }
+    };
+
     const deletePost = async (postId) => {
         await postService.remove(postId);
         setPosts(posts => posts.filter(x => x._id !== postId));
@@ -52,6 +65,7 @@ export const PostProvider = ({
         posts,
         deleteDialogIsOpen,
         onCreatePostSubmit,
+        onUpdatePostSubmit,
         deletePost,
         openDeleteDialog,
         closeDeleteDialog

@@ -18,6 +18,11 @@ export async function create(data) {
     return post;
 }
 
+export async function edit(data,postId) {
+    const post = await requester.put(`${baseUrl}/${postId}`, data);
+    return post;
+}
+
 export async function remove(postId) {
     await requester.remove(`${baseUrl}/${postId}`);
 }
