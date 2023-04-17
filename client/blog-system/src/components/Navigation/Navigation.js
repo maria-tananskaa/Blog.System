@@ -25,6 +25,7 @@ export function Navigation() {
                 )}
                 {accessToken && (
                     <Fragment>
+                        <Link className={styles.link} to="/myPosts">My Posts</Link>
                         <Link className={styles.link} to="/createPost">Create Post</Link>
                         <button className={styles.button} onClick={onLogout}>Logout</button>
                     </Fragment>

@@ -9,6 +9,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
 import { SnackbarProvider } from './contexts/SnackbarContext';
 import { SnackbarComponent } from './components/Snackbar/Snackbar';
+import { MyPosts } from './components/MyPosts/MyPosts';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path='/' element={<Blog />} />
+            <Route path='/myPosts' element={<MyPosts />} />
             <Route path='/posts/:postId' element={<Post />} />
             <Route path="/createPost" element={<CreateEditPost />} />
             <Route path="/editPost/:postId" element={<CreateEditPost />} />

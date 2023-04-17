@@ -34,7 +34,7 @@ export const PostProvider = ({
         try {
             const response = await postService.create(data);
 
-            setPosts(posts => [...posts, response]);
+            setPosts(posts => [response, ...posts]);
 
             navigate(`/posts/${response._id}`);
 
