@@ -36,7 +36,7 @@ export const PostProvider = ({
 
             setPosts(posts => [...posts, response]);
 
-            navigate("/");
+            navigate(`/posts/${response._id}`);
 
         } catch (error) {
             openSnackbar(error.message);
@@ -49,7 +49,7 @@ export const PostProvider = ({
 
             setPosts(state => state.map(x => x._id === postId ? response : x))
 
-            navigate("/");
+            navigate(`/posts/${postId}`);
 
         } catch (error) {
             openSnackbar(error.message);

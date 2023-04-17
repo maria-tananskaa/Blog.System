@@ -1341,7 +1341,8 @@
                 "title": "Cats",
                 "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2022%2F09%2F22%2Ffacts-about-cats-1292117990-2000.jpg&q=60",
                 "shortDescription": "Animals are multicellular, eukaryotic organisms in the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development. Over 1.5 million living ",
-                "content": "Some content"
+                "content": "Some content",
+                "createdBy":"Petar Petrov"
             },
             "1840a313-225c-416a-817a-9954d4609f7c": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1350,7 +1351,8 @@
                 "title": "Animals",
                 "imageUrl": "https://expeditionsonline.com/application/files/cache/176630e8ba63cd41521253e1c8d5f917.jpg",
                 "shortDescription": "Animals are multicellular, eukaryotic organisms in the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development. Over 1.5 million living ",
-                "content": "Some content"
+                "content": "Some content",
+                "createdBy":"Petar Petrov"
             },
             "126777f5-3277-42ad-b874-76d043b069cb": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
@@ -1359,7 +1361,8 @@
                 "imageUrl": "https://www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg?_=42445",
                 "shortDescription": "Animals are multicellular, eukaryotic organisms in the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development. Over 1.5 million living ",
                 "content": "Some content",
-                "_id": "126777f5-3277-42ad-b874-76d043b069c"
+                "_id": "126777f5-3277-42ad-b874-76d043b069c",
+                "createdBy":"Petar Petrov"
             }
         },
         comments: {

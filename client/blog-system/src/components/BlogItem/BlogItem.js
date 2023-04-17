@@ -8,17 +8,21 @@ export function BlogItem({
     title,
     imageUrl,
     shortDescription,
+    createdBy
 }) {
     const date = new Date(_createdOn).toDateString();
+    const names = createdBy.split(" ");
+    const initials=`${names[0].charAt()}${names[1].charAt()}`
 
     return (
         <Card sx={{ maxWidth: 800 }}>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: "#734FE6" }}>MT</Avatar>
+                    <Avatar sx={{ bgcolor: "#734FE6" }}>{initials}</Avatar>
                 }
                 title={<h2>{title}</h2>}
                 subheader={date}
+                subheader2 ={createdBy}
             />
             <CardMedia component="img" height="400" image={imageUrl} alt="green iguana" />
             <CardContent>

@@ -4,17 +4,20 @@ import { Link, useParams } from "react-router-dom";
 import styles from './CreateEditPost.module.css';
 import { usePostContext } from "../../contexts/PostContext";
 import { useSnackbarContext } from "../../contexts/SnackbarContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { getOne } from "../../services/postService";
 
 export function CreateEditPost() {
     const { onCreatePostSubmit, onUpdatePostSubmit } = usePostContext();
     const { openSnackbar } = useSnackbarContext();
+    const { firstName, lastName } = useAuthContext();
     const { postId } = useParams();
     const [values, setValues] = useState({
         title: '',
         imageUrl: '',
         shortDescription: '',
-        content: ''
+        content: '',
+        createdBy: `${firstName} ${lastName}`
     });
 
     useEffect(() => {
