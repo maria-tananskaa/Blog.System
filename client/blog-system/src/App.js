@@ -7,23 +7,27 @@ import { Register } from './components/Register/Register';
 import { CreateEditPost } from './components/CreateEditPost/CreateEditPost';
 import { AuthProvider } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
+import { SnackbarProvider } from './contexts/SnackbarContext';
+import { SnackbarComponent } from './components/Snackbar/Snackbar';
 
 function App() {
   return (
-    <AuthProvider>
-      <PostProvider>
-        <Navigation />
-        <Routes>
-          <Route path='/' element={<Blog />} />
-          <Route path='/posts/:postId' element={<Post />} />
-          <Route path="/createPost" element={<CreateEditPost />} />
-          <Route path="/editPost/:postId" element={<CreateEditPost />} />
-        </Routes>
-      </PostProvider>
-      <Login />
-      <Register />
-
-    </AuthProvider>
+    <SnackbarProvider>
+      <AuthProvider>
+        <PostProvider>
+          <Navigation />
+          <Routes>
+            <Route path='/' element={<Blog />} />
+            <Route path='/posts/:postId' element={<Post />} />
+            <Route path="/createPost" element={<CreateEditPost />} />
+            <Route path="/editPost/:postId" element={<CreateEditPost />} />
+          </Routes>
+        </PostProvider>
+        <Login />
+        <Register />
+        <SnackbarComponent />
+      </AuthProvider>
+    </SnackbarProvider>
   );
 }
 

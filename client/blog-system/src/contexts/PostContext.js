@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSnackbarContext } from './SnackbarContext';
 import * as postService from '../services/postService';
 
 export const PostContext = createContext();
@@ -10,13 +11,14 @@ export const PostProvider = ({
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [deleteDialogIsOpen, setDeleteDialogIsOpen] = useState(false);
+    const { openSnackbar } = useSnackbarContext();
 
     useEffect(() => {
         postService.getAll()
             .then(result => {
                 setPosts(result);
-            }).catch((err) => {
-                console.log(err.message);
+            }).catch((error) => {
+                openSnackbar(error.message);
             })
     }, []);
 
@@ -36,8 +38,8 @@ export const PostProvider = ({
 
             navigate("/");
 
-        } catch (err) {
-            console.log(err.message, "error");
+        } catch (error) {
+            openSnackbar(error.message);
         }
     };
 
@@ -49,16 +51,20 @@ export const PostProvider = ({
 
             navigate("/");
 
-        } catch (err) {
-            console.log(err.message, "error");
+        } catch (error) {
+            openSnackbar(error.message);
         }
     };
 
     const deletePost = async (postId) => {
-        await postService.remove(postId);
-        setPosts(posts => posts.filter(x => x._id !== postId));
-        closeDeleteDialog();
-        navigate("/");
+        try {
+            await postService.remove(postId);
+            setPosts(posts => posts.filter(x => x._id !== postId));
+            closeDeleteDialog();
+            navigate("/");
+        } catch (error) {
+            openSnackbar(error.message);
+        }
     }
 
     const contextValues = {

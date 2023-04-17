@@ -7,12 +7,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import * as postService from "../../services/postService";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { usePostContext } from "../../contexts/PostContext";
+import { useSnackbarContext } from "../../contexts/SnackbarContext";
 import { DeleteDialog } from "../DeleteDialog/DeleteDialog";
 
 export function Post() {
     const navigate = useNavigate();
     const { userId } = useAuthContext();
     const { openDeleteDialog } = usePostContext();
+    const { openSnackbar } = useSnackbarContext();
     const [post, setPost] = useState({});
     const { postId } = useParams();
 
@@ -21,7 +23,7 @@ export function Post() {
             .then(response => {
                 setPost(response);
             }).catch(error => {
-                console.log(error.message);
+                openSnackbar(error.message);
             });
     }, [postId]);
 

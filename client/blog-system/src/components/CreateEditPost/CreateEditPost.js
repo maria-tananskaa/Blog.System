@@ -3,10 +3,12 @@ import { Button, FormControl, Stack, TextField } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import styles from './CreateEditPost.module.css';
 import { usePostContext } from "../../contexts/PostContext";
+import { useSnackbarContext } from "../../contexts/SnackbarContext";
 import { getOne } from "../../services/postService";
 
 export function CreateEditPost() {
     const { onCreatePostSubmit, onUpdatePostSubmit } = usePostContext();
+    const { openSnackbar } = useSnackbarContext();
     const { postId } = useParams();
     const [values, setValues] = useState({
         title: '',
@@ -20,8 +22,8 @@ export function CreateEditPost() {
             getOne(postId)
                 .then(post => {
                     setValues(post);
-                }).catch(err => {
-                    console.log(err.message);
+                }).catch(error => {
+                    openSnackbar(error.message);
                 });
         }
     }, [postId]);

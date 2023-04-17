@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from 'react';
 import * as authService from '../services/authService';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSnackbarContext } from './SnackbarContext';
 
 export const AuthContext = createContext();
 
@@ -10,6 +11,7 @@ export const AuthProvider = ({
     const [loginIsOpen, setLoginIsOpen] = useState(false);
     const [registerIsOpen, setRegisterIsOpen] = useState(false);
     const [user, setUser] = useLocalStorage('user', {});
+    const { openSnackbar } = useSnackbarContext();
 
     const openLoginDialog = () => {
         setLoginIsOpen(true);
@@ -32,8 +34,8 @@ export const AuthProvider = ({
             const response = await authService.login(data);
             setUser(response);
             setLoginIsOpen(false);
-        } catch (err) {
-            console.log(err.message, "error");
+        } catch (error) {
+            openSnackbar(error.message);
         }
     };
 
@@ -42,15 +44,18 @@ export const AuthProvider = ({
             const response = await authService.register(data);
             setUser(response);
             setRegisterIsOpen(false);
-        } catch (err) {
-            console.log(err.message, "error");
+        } catch (error) {
+            openSnackbar(error.message);
         }
     };
 
     const onLogout = async () => {
-
-        await authService.logout();
-        setUser({});
+        try {
+            await authService.logout();
+            setUser({});
+        } catch (error) {
+            openSnackbar(error.message);
+        }
     }
 
     const contextValues = {
