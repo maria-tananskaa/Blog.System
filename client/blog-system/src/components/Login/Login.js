@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Dialog, DialogTitle, FormControl, Stack, TextField } from "@mui/material";
 import { useAuthContext } from "../../contexts/AuthContext";
+import * as validator from "../../validator/validator";
 
 export function Login() {
     const { loginIsOpen, closeLoginDialog, onLoginSubmit } = useAuthContext()
@@ -8,6 +9,7 @@ export function Login() {
         email: '',
         password: '',
     });
+    const [errors, setErrors] = useState({});
 
     const onChangeHandler = (e) => {
         setValues(state => ({ ...state, [e.target.id]: e.target.value }))
@@ -15,7 +17,35 @@ export function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
         onLoginSubmit(values);
+    }
+
+    const validateForm = () => {
+        let currentErrors = {};
+        let formIsValid = true;
+        const emailValidationMessage = validator.validateEmail(values.email);
+        const passwordValidationMessage = validator.validatePassword(values.password);
+
+
+        if (emailValidationMessage) {
+            currentErrors.emailError = emailValidationMessage;
+            currentErrors.isEmailError = true;
+            formIsValid = false;
+        }
+
+        if (passwordValidationMessage) {
+            currentErrors.passwordError = passwordValidationMessage;
+            currentErrors.isPasswordError = true;
+            formIsValid = false;
+        }
+
+        setErrors(currentErrors);
+        return formIsValid;
     }
 
     return (
@@ -29,6 +59,9 @@ export function Login() {
                             label="Email"
                             value={values.email}
                             onChange={onChangeHandler}
+                            onBlur={validateForm}
+                            error={errors.isEmailError}
+                            helperText={errors.emailError}
                         />
                         <TextField
                             id="password"
@@ -36,6 +69,9 @@ export function Login() {
                             type="password"
                             value={values.password}
                             onChange={onChangeHandler}
+                            onBlur={validateForm}
+                            error={errors.isPasswordError}
+                            helperText={errors.passwordError}
                         />
                         <Stack spacing={2} direction="row">
                             <Button type="submit" >Login</Button>
