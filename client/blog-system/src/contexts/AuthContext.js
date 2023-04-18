@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as authService from '../services/authService';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useSnackbarContext } from './SnackbarContext';
@@ -8,6 +9,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children,
 }) => {
+    const navigate = useNavigate();
     const [loginIsOpen, setLoginIsOpen] = useState(false);
     const [registerIsOpen, setRegisterIsOpen] = useState(false);
     const [user, setUser] = useLocalStorage('user', {});
@@ -53,6 +55,7 @@ export const AuthProvider = ({
         try {
             await authService.logout();
             setUser({});
+            navigate("/")
         } catch (error) {
             openSnackbar(error.message);
         }
