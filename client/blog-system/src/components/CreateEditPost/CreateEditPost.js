@@ -6,12 +6,14 @@ import { usePostContext } from "../../contexts/PostContext";
 import { useSnackbarContext } from "../../contexts/SnackbarContext";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { getOne } from "../../services/postService";
+import * as validator from "../../validator/validator";
 
 export function CreateEditPost() {
     const { onCreatePostSubmit, onUpdatePostSubmit } = usePostContext();
     const { openSnackbar } = useSnackbarContext();
     const { firstName, lastName } = useAuthContext();
     const { postId } = useParams();
+    const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         title: '',
         imageUrl: '',
@@ -38,11 +40,51 @@ export function CreateEditPost() {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        if (!validateForm()) {
+            return;
+        }
+
         if (postId) {
             onUpdatePostSubmit(values, postId);
         } else {
             onCreatePostSubmit(values);
         }
+    }
+
+    const validateForm = () => {
+        let currentErrors = {};
+        let formIsValid = true;
+        const titleErrorMessage = validator.validateTitle(values.title);
+        const imageUrlErrorMessage = validator.validateImageUrl(values.imageUrl);
+        const descriptionErrorMessage = validator.validateDescription(values.shortDescription);
+        const contentErrorMessage = validator.validateContent(values.content);
+
+        if (titleErrorMessage) {
+            currentErrors.titleError = titleErrorMessage;
+            currentErrors.isTitleError = true;
+            formIsValid = false;
+        }
+
+        if (imageUrlErrorMessage) {
+            currentErrors.imageUrlError = imageUrlErrorMessage;
+            currentErrors.isImageUrlError = true;
+            formIsValid = false;
+        }
+
+        if (descriptionErrorMessage) {
+            currentErrors.descriptionError = descriptionErrorMessage;
+            currentErrors.isDescriptionError = true;
+            formIsValid = false;
+        }
+
+        if (contentErrorMessage) {
+            currentErrors.contentError = contentErrorMessage;
+            currentErrors.isContentError = true;
+            formIsValid = false;
+        }
+
+        setErrors(currentErrors);
+        return formIsValid;
     }
 
     return (
@@ -56,12 +98,16 @@ export function CreateEditPost() {
                             label="Title"
                             value={values.title}
                             onChange={onChangeHandler}
+                            error={errors.isTitleError}
+                            helperText={errors.titleError}
                         />
                         <TextField
                             id="imageUrl"
                             label="Image Url"
                             value={values.imageUrl}
                             onChange={onChangeHandler}
+                            error={errors.isImageUrlError}
+                            helperText={errors.imageUrlError}
                         />
                         <TextField
                             id="shortDescription"
@@ -70,6 +116,8 @@ export function CreateEditPost() {
                             rows={4}
                             value={values.shortDescription}
                             onChange={onChangeHandler}
+                            error={errors.isDescriptionError}
+                            helperText={errors.descriptionError}
                         />
                         <TextField
                             id="content"
@@ -78,6 +126,8 @@ export function CreateEditPost() {
                             rows={4}
                             value={values.content}
                             onChange={onChangeHandler}
+                            error={errors.isContentError}
+                            helperText={errors.contentError}
                         />
                         <Stack spacing={2} direction="row">
                             {!postId &&

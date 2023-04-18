@@ -1322,11 +1322,15 @@
         users: {
             "35c62d76-8152-4626-8712-eeb96381bea8": {
                 email: "peter@abv.bg",
-                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                firstName:"Peter",
+                lastName:"Petrov"
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
                 email: "john@abv.bg",
-                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                firstName:"John",
+                lastName:"John"
             }
         },
         sessions: {
@@ -1336,31 +1340,31 @@
        posts: {
             "ff436770-76c5-40e2-b231-77409eda7a61": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "_createdOn": 1617194128618,
+                "_createdOn": 1680194128618,
                 "_id": "ff436770-76c5-40e2-b231-77409eda7a61",
                 "title": "Cats",
                 "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2022%2F09%2F22%2Ffacts-about-cats-1292117990-2000.jpg&q=60",
-                "shortDescription": "Animals are multicellular, eukaryotic organisms in the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development. Over 1.5 million living ",
-                "content": "Some content",
-                "createdBy":"Petar Petrov"
+                "shortDescription": "Cat, (Felis catus), also called house cat or domestic cat, domesticated member of the family Felidae, order Carnivora, and the smallest member of that family. Like all felids, domestic cats are characterized by supple low-slung bodies, finely molded heads, long tails that aid in balance, and specialized teeth and claws that adapt them admirably to a life of active hunting. Cats possess other features of their wild relatives in being basically carnivorous, remarkably agile and powerful, and finely coordinated in movement.",
+                "content": "It is noteworthy that the ancestors of the other common household pet, the dog, were social animals that lived together in packs in which there was subordination to a leader, and the dog has readily transferred its allegiance from pack leader to human master. The cat, however, has not yielded as readily to subjugation. Consequently, the house cat is able to revert to complete self-reliance more quickly and more successfully than most domesticated dogs. For an account of the relationship of the family of cats to other carnivores, see carnivore. The cat pattern, established very early in the evolution of modern mammals, was a successful one: early cats were already typical in form at a time when the ancestors of most other modern mammalian types were scarcely recognizable. They first appeared in the early Pliocene Epoch (5.3 to 3.6 million years ago), and they have continued with remarkably little change into modern times.",
+                "createdBy":"John Wick"
             },
             "1840a313-225c-416a-817a-9954d4609f7c": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "_createdOn": 1617194210928,
+                "_createdOn": 1680194210928,
                 "_id": "1840a313-225c-416a-817a-9954d4609f7c",
-                "title": "Animals",
+                "title": "Penguin",
                 "imageUrl": "https://expeditionsonline.com/application/files/cache/176630e8ba63cd41521253e1c8d5f917.jpg",
-                "shortDescription": "Animals are multicellular, eukaryotic organisms in the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development. Over 1.5 million living ",
-                "content": "Some content",
+                "shortDescription": "Penguins are a group of aquatic flightless birds from the order Sphenisciformes of the family Spheniscidae.They live almost exclusively in the Southern Hemisphere: only one species, the Galápagos penguin, is found north of the Equator. Highly adapted for life in the water, penguins have countershaded dark and white plumage and flippers for swimming. Most penguins feed on krill, fish, squid and other forms of sea life which they catch with their bills and swallow whole while swimming. A penguin has a spiny tongue and powerful jaws to grip slippery prey.",
+                "content": "The word penguin first appears in literature at the end of the 16th century. When European explorers discovered what are today known as penguins in the Southern Hemisphere, they noticed their similar appearance to the great auk of the Northern Hemisphere, and named them after this bird, although they are not closely related. The etymology of the word penguin is still debated. The English word is not apparently of French, Breton or Spanish origin (the latter two are attributed to the French word pingouin), but first appears in English or Dutch. Some dictionaries suggest a derivation from Welsh pen, 'head' and gwyn, 'white', including the Oxford English Dictionary, the American Heritage Dictionary, the Century Dictionary and Merriam-Webster, on the basis that the name was originally applied to the great auk, either because it was found on White Head Island (Welsh: Pen Gwyn) in Newfoundland, or because it had white circles around its eyes (though the head was black). An alternative etymology links the word to Latin pinguis, which means 'fat' or 'oil'. Support for this etymology can be found in the alternative Germanic word for penguin, fettgans or 'fat-goose', and the related Dutch word vetgans. Adult male penguins are called cocks, females are hens; a group of penguins on land is a waddle, and a group of penguins in the water is a raft.",
                 "createdBy":"Petar Petrov"
             },
             "126777f5-3277-42ad-b874-76d043b069cb": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
-                "_createdOn": 1617194295474,
+                "_createdOn": 1681842804655,
                 "title": "Dogs",
                 "imageUrl": "https://www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg?_=42445",
-                "shortDescription": "Animals are multicellular, eukaryotic organisms in the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development. Over 1.5 million living ",
-                "content": "Some content",
+                "shortDescription": "Dog, (Canis lupus familiaris), domestic mammal of the family Canidae (order Carnivora). It is a subspecies of the gray wolf (Canis lupus) and is related to foxes and jackals. The dog is one of the two most ubiquitous and most popular domestic animals in the world (the cat is the other). For more than 12,000 years it has lived with humans as a hunting companion, protector, object of scorn or adoration, and friend.",
+                "content": "The dog evolved from the gray wolf into more than 400 distinct breeds. Human beings have played a major role in creating dogs that fulfill distinct societal needs. Through the most rudimentary form of genetic engineering, dogs were bred to accentuate instincts that were evident from their earliest encounters with humans. Although details about the evolution of dogs are uncertain, the first dogs were hunters with keen senses of sight and smell. Humans developed these instincts and created new breeds as need or desire arose. Dogs are regarded differently in different parts of the world. Characteristics of loyalty, friendship, protectiveness, and affection have earned dogs an important position in Western society, and in the United States and Europe the care and feeding of dogs has become a multibillion-dollar business. Western civilization has given the relationship between human and dog great importance, but, in some of the developing nations and in many areas of Asia, dogs are not held in the same esteem. In some areas of the world, dogs are used as guards or beasts of burden or even for food, whereas in the United States and Europe dogs are protected and admired. In ancient Egypt during the days of the pharaohs, dogs were considered to be sacred.",
                 "_id": "126777f5-3277-42ad-b874-76d043b069c",
                 "createdBy":"Petar Petrov"
             }

@@ -25,7 +25,14 @@ export function Register() {
             return;
         }
 
-        onRegisterSubmit(values);
+        const data = {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.password
+        };
+
+        onRegisterSubmit(data);
     }
 
     const validateForm = () => {

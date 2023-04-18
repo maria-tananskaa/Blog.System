@@ -5,11 +5,12 @@ import * as validator from "../../validator/validator";
 
 export function Login() {
     const { loginIsOpen, closeLoginDialog, onLoginSubmit } = useAuthContext()
+    const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         email: '',
         password: '',
     });
-    const [errors, setErrors] = useState({});
+    
 
     const onChangeHandler = (e) => {
         setValues(state => ({ ...state, [e.target.id]: e.target.value }))
@@ -59,7 +60,6 @@ export function Login() {
                             label="Email"
                             value={values.email}
                             onChange={onChangeHandler}
-                            onBlur={validateForm}
                             error={errors.isEmailError}
                             helperText={errors.emailError}
                         />
@@ -69,7 +69,6 @@ export function Login() {
                             type="password"
                             value={values.password}
                             onChange={onChangeHandler}
-                            onBlur={validateForm}
                             error={errors.isPasswordError}
                             helperText={errors.passwordError}
                         />
